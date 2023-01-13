@@ -1,0 +1,55 @@
+---
+- name: Wes-zsh-install
+  hosts: localhost
+  connection: local
+  vars:
+    theme: "agnoster" ## make definable later
+    user: "{{ lookup('env', 'USER') }}"
+    home: "{{ lookup('env', 'HOME') }}"
+  
+  tasks:
+  - name: "Apt to install zsh"
+    ansible.builtin.apt: # module
+      name: zsh
+      state: present
+    become: true # run as root. keyword for task not module
+
+  - name: "Apt to install fonts-powerline"
+    ansible.builtin.apt:
+      name: fonts-powerline
+      state: present
+    become: true
+
+  - name: "Download oh-my-zsh"
+    ansible.builtin.raw: wget -O oh-my-zsh_install.sh https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh 
+
+  - name: "Install oh-my-zsh"
+    ansible.builtin.script: ./oh-my-zsh_install.sh --unattended
+
+  - name: "Change default shell"
+    ansible.builtin.raw: usermod -s /bin/zsh {{ user }}
+    become: true
+
+  - name: "Downloading zsh plugin autosuggestions"
+    ansible.builtin.git:
+      dest: "{{ home }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+      repo: "https://github.com/zsh-users/zsh-autosuggestions"
+
+  - name: "Downloading zsh plugin syntax highlighting"
+    ansible.builtin.git:
+      dest: "{{ home }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+      repo: "https://github.com/zsh-users/zsh-syntax-highlighting"
+
+  - name: "Adding plugins to .zshrc"
+    lineinfile:
+      path: "~/.zshrc"
+      regexp: "^plugins=.*"
+      line: "plugins=(git colored-man-pages zsh-syntax-highlighting zsh-autosuggestions)"
+      backup: true
+
+  - name: "Editing theme in .zshrc"
+    lineinfile:
+      path: "{{ home }}/.zshrc"
+      regexp: "^ZSH_THEME=.*"
+      line: 'ZSH_THEME="{{ theme }}"'
+      backup: true

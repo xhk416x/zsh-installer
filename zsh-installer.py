@@ -6,6 +6,7 @@ and will include dependency checks and minor customization options
 
 #### gathering modules
 import modules.packagemanager_check as pm_check
+import modules.package_deps_install as pkg_install
 import importlib
 import os
 import sys
@@ -24,6 +25,7 @@ with open(f"{PWD}/dependencies/python_dependencies.txt", "r") as deplist:
 def main():
     supported_pkgm = ["apt", "yum", "dnf"]
     pkg_m = pm_check.packagemanager_check()
+    pkg_install(pkg_m)
     playbookpath = f'{PWD}/project/{pkg_m}playbook.yaml'
 
     if pkg_m in supported_pkgm:

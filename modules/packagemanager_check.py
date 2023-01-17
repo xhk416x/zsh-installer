@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-"""check for dnf or apt"""
+"""check for package managers and return as string"""
 
 import os
 
 def packagemanager_check():
     try:
-        apt = os.system("which apt > /dev/null")
-        dnf = os.system("which dnf > /dev/null")
-        yum = os.system("which yum > /dev/null")
-        pacman = os.system("which pacman > /dev/null")
+        apt = os.system("which apt >> /dev/null 2>&1")
+        dnf = os.system("which dnf >> /dev/null 2>&1")
+        yum = os.system("which yum >> /dev/null 2>&1")
+        pacman = os.system("which pacman >> /dev/null 2>&1")
         if apt == 0:
             return "apt"
         elif dnf == 0:

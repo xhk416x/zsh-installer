@@ -3,15 +3,16 @@
 and will include dependency checks and minor customization options
 || Wes Pritchard
 """
-#### gathering variables
-HOME = os.getenv('HOME')
-PWD = os.getcwd()
+
 #### gathering modules
 import modules.packagemanager_check as pm_check
 import importlib
 import os
 import sys
-import pip
+#### gathering variables
+HOME = os.getenv('HOME')
+PWD = os.getcwd()
+#### importing python dependencies
 with open(f"{PWD}/dependencies/python_dependencies.txt", "r") as deplist: 
     mods = []
     for line in deplist:

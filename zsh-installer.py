@@ -7,12 +7,12 @@ and will include dependency checks and minor customization options
 HOME = os.getenv('HOME')
 PWD = os.getcwd()
 #### gathering modules
-import packagemanager_check as pm_check
+import modules.packagemanager_check as pm_check
 import importlib
 import os
 import sys
 import pip
-with open(f"{PWD}/python_dependencies.txt", "r") as deplist: 
+with open(f"{PWD}/dependencies/python_dependencies.txt", "r") as deplist: 
     mods = []
     for line in deplist:
         modname= line.strip("\n")

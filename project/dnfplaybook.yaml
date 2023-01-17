@@ -8,23 +8,6 @@
     home: "{{ lookup('env', 'HOME') }}"
   
   tasks:
-  # - name: "Apt to install package dependencies"
-  #   ansible.builtin.apt: # module
-  #     name:
-  #       - zsh
-  #       - fonts-powerline
-  #     state: present
-  #   become: true # run as root. keyword for task not module
-
-  # - name: "Apt to install fonts-powerline"
-  #   ansible.builtin.apt:
-  #     name: fonts-powerline
-  #     state: present
-  #   become: true
-
-  # - name: "Download oh-my-zsh"
-  #   ansible.builtin.raw: wget -O oh-my-zsh_install.sh https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh 
-
   - name: "Download oh-my-zsh"
     ansible.builtin.get_url:
       url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
@@ -32,10 +15,6 @@
 
   - name: "Install oh-my-zsh"
     ansible.builtin.script: /tmp/oh-my-zsh_install.sh --unattended
-
-  # - name: "Change default shell"
-  #   ansible.builtin.raw: usermod -s /bin/zsh {{ user }}
-  #   become: true
 
   - name: "Change default shell"
     ansible.builtin.user:

@@ -1,4 +1,4 @@
 python3-pip
-ansible
+ansible-core
 fonts-powerline
 powerline-fonts

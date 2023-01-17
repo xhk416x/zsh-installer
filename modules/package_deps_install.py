@@ -11,3 +11,6 @@ def install_pkg_deps(pkgmgr):
         elif pkgmgr == "dnf" or pkgmgr == "yum":
             deps = str(pkgs.read()).replace("\n",' ')
             print(f"sudo {pkgmgr} install {deps} -y")
+
+if __name__ == "__main__":
+    install_pkg_deps()

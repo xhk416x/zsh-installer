@@ -12,8 +12,18 @@ def import_with_auto_install(package):
         pip.main(['install', package])
 
 if __name__ == '__main__':
-    os.system("sudo apt update && sudo apt install python3-pip ansible -y")
-    with open("dependencies.txt", "r") as foo:
+    import packagemanager_check as pm_check
+    with open("package_dependencies.txt", "r") as pkgs:
+        deps = []
+        for pkg in pkgs:
+            deps.append()
+        depstring = {print(deps, sep=' ')}
+        if pm_check == "apt":
+            os.system(f"sudo apt update && sudo apt install {depstring} -y")
+        elif pm_check == "dnf" or pm_check == "yum":
+            os.system(f"sudo {pm_check} install {depstring} -y")
+    
+    with open("python_dependencies.txt", "r") as foo:
         mods = []
         for line in foo:
             modname= line.strip("\n")

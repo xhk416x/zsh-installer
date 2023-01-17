@@ -13,8 +13,7 @@
       url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
       dest: /tmp/oh-my-zsh_install.sh
 
-  - name: "In    from packagemanager_check import packagemanager_check as pm_check
-    pm = pm_check()stall oh-my-zsh"
+  - name: "Install oh-my-zsh"
     ansible.builtin.script: /tmp/oh-my-zsh_install.sh --unattended
 
   - name: "Change default shell"

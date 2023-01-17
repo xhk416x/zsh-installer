@@ -2,16 +2,16 @@
 
 def install_pkg_deps(pkgmgr):
     from os.path import dirname, abspath
+    import os
     dir_up = dirname(dirname(abspath(__file__)))
+    deps = str(pkgs.read()).replace("\n",' ')
     with open(f"{dir_up}/dependencies/package_dependencies.txt", "r") as pkgs:
         if pkgmgr == "apt":
-            import apt_pkg
-            for pkg in pkgs:
-                apt_pkg.do_install(pkg)
+            os.system(f"sudo {pkgmgr} install {deps} -y")
         elif pkgmgr == "dnf" or pkgmgr == "yum":
-            deps = str(pkgs.read()).replace("\n",' ')
-            print(f"sudo {pkgmgr} install {deps} -y")
+            os.system(f"sudo {pkgmgr} install {deps} -y")
 
 if __name__ == "__main__":
     from packagemanager_check import packagemanager_check as pm_check
-    install_pkg_deps(pm_check)
+    pm = pm_check
+    install_pkg_deps(pm)

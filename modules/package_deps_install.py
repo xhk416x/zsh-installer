@@ -13,5 +13,5 @@ def install_pkg_deps(pkgmgr):
 
 if __name__ == "__main__":
     from packagemanager_check import packagemanager_check as pm_check
-    pm = pm_check
+    pm = pm_check()
     install_pkg_deps(pm)

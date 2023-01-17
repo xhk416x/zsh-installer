@@ -39,7 +39,7 @@
 
   - name: "Change default shell"
     ansible.builtin.user:
-      name: {{ user }}
+      name: "{{ user }}"
       shell: /bin/zsh
 
   - name: "Downloading zsh plugin autosuggestions"

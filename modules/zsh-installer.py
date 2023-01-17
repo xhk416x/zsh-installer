@@ -6,7 +6,7 @@ and will include dependency checks and minor customization options
 
 #### gathering modules
 from packagemanager_check import packagemanager_check as pm_check
-import package_deps_install as pkg_install
+from package_deps_install import install_pkg_deps as pkg_install
 import importlib
 import os
 import sys

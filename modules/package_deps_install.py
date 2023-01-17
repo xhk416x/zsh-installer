@@ -4,8 +4,8 @@ def install_pkg_deps(pkgmgr):
     from os.path import dirname, abspath
     import os
     dir_up = dirname(dirname(abspath(__file__)))
-    deps = str(pkgs.read()).replace("\n",' ')
     with open(f"{dir_up}/dependencies/package_dependencies.txt", "r") as pkgs:
+        deps = str(pkgs.read()).replace("\n",' ')    
         if pkgmgr == "apt":
             os.system(f"sudo {pkgmgr} install {deps} -y")
         elif pkgmgr == "dnf" or pkgmgr == "yum":

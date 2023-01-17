@@ -13,4 +13,5 @@ def install_pkg_deps(pkgmgr):
             print(f"sudo {pkgmgr} install {deps} -y")
 
 if __name__ == "__main__":
-    install_pkg_deps()
+    import packagemanager_check as pm_check
+    install_pkg_deps(pm_check)

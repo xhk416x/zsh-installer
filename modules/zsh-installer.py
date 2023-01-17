@@ -25,23 +25,27 @@ with open(f"{dir_up}/dependencies/python_dependencies.txt", "r") as deplist:
         globals()[mod] = importlib.import_module(mod)
 
 def main():
+    #### determines and installs linux package dependencies from ../dependencies/{pm}dependencies.txt
     supported_pkgm = ["apt", "yum", "dnf"]
     pkg_m = pm_check()
     pkg_install(pkg_m)
-    playbookpath = f'{dir_up}/project/{pkg_m}playbook.yaml'
-
-    if pkg_m in supported_pkgm:
-        out, err, rc = ansible_runner.run_command(
-            executable_cmd='ansible-playbook',
-            cmdline_args=[playbookpath, '-K'],
-            input_fd=sys.stdin,
-            output_fd=sys.stdout,
-            error_fd=sys.stderr,
-        )
-    else:
-        print("Sorry, looks like your distro might not be supported.")
     
-    print("Please log out and back in to see the effect!")
+    playbookpath = f'{dir_up}/project/{pkg_m}playbook.yaml'
+    
+    try:
+        if pkg_m in supported_pkgm:
+            out, err, rc = ansible_runner.run_command(
+                executable_cmd='ansible-playbook',
+                cmdline_args=[playbookpath, '-K'],
+                input_fd=sys.stdin,
+                output_fd=sys.stdout,
+                error_fd=sys.stderr,
+            )
+        else:
+            print("Sorry, looks like your distro might not be supported.")
+        print("Please log out and back in to see the effect!")
+    except:
+        print("Oops. Something went wrong.")
 
 ####add customizations
 #edit .zshrc to include updated ~/bin PATH

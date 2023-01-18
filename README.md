@@ -1,4 +1,5 @@
-<p align="left"><img src="https://zsh.sourceforge.io/Images/color_vertical_icon.png" alt="zsh"><img src="https://ohmyzsh.s3.amazonaws.com/omz-ansi-github.png" alt="Oh My Zsh"></p>
+<p align="center"><img src="https://zsh.sourceforge.io/Images/color_vertical_icon.png" alt="zsh"></p>
+<p align="center"><img src="https://ohmyzsh.s3.amazonaws.com/omz-ansi-github.png" alt="Oh My Zsh"></p>
 
 # Zsh-installer
 ## This Repo is primarily a skills demonstration. 

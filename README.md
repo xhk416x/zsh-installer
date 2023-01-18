@@ -8,9 +8,10 @@ The function of this repo is to make a fresh Linux install set up zsh, [oh-my-zs
 
 ## Installation
 
-CAUTION: Zsh-installer requires the **fonts-powerline** package, which usually requires EPEL repos to be installed on Red Hat distros in order to work. </p>
-CAUTION: Ansible 3.X is required at this time. </p>
-NOTE: zsh-installer will autodetect distribution and download the respective packages based on the packages listed in **dependencies/{apt/dnf/yum}dependencies.txt**
+**CAUTION**: Zsh-installer requires the **fonts-powerline** package, which usually requires EPEL repos to be installed on Red Hat distros in order to work. </p>
+**CAUTION**: Ansible 3.X is required at this time. </p>
+**NOTE**: zsh-installer will autodetect distribution and download the respective packages based on the packages listed in **dependencies/{apt/dnf/yum}dependencies.txt**
+**NOTE**: zsh-installer requires a sudo password twice, once to install package dependencies and once to "become" the super user for ansible execution.
 
 To install, clone this repo to your user's home directory by running ```git clone https://github.com/xhk416x/zsh-installer.git``` from your linux command line. the cd into the directory with ```cd zsh-installer``` and then run the install.sh script by inputting ```bash install.sh```
 
